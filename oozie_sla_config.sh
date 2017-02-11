@@ -97,10 +97,13 @@ startOozieServiceViaRest() {
     echo $startResult
 }
 
-downloadActiveMQ
-startActiveMQ
-updateOozieConfigs
-stopOozieServiceViaRest
-sleep 60
-startOozieServiceViaRest
-
+nodename=$(hostname -f | head -c 3)
+if [ "$nodename" = "hn0" ]
+then
+	downloadActiveMQ
+	startActiveMQ
+	updateOozieConfigs
+	stopOozieServiceViaRest
+	sleep 60
+	startOozieServiceViaRest
+fi
