@@ -81,8 +81,7 @@ updateOozieConfigs() {
 stopOozieServiceViaRest() {
     SERVICENAME=OOZIE
     echo "Stopping $SERVICENAME"
-    curl -u $USERNAME:$PASSWORD -i -H 'X-Requested-By: ambari' -X PUT -d '{"RequestInfo": {"context" :"Stop Oozie Service"}, "Body": {"ServiceInfo": {"state": "INSTALLED"}}}' http://$ACTIVEAMBARIHO
-ST:$PORT/api/v1/clusters/$CLUSTERNAME/services/$SERVICENAME
+    curl -u $USERNAME:$PASSWORD -i -H 'X-Requested-By: ambari' -X PUT -d '{"RequestInfo": {"context" :"Stop Oozie Service"}, "Body": {"ServiceInfo": {"state": "INSTALLED"}}}' http://$ACTIVEAMBARIHOST:$PORT/api/v1/clusters/$CLUSTERNAME/services/$SERVICENAME
 }
 
 #Start Oozie Service
